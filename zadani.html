@@ -197,10 +197,14 @@
           let jmeno = "Franta",
               prijmeni = "Pluške";
           const pozdrav = "Ahoj";
-          let vystup = pozdrav + ' tady ' + jmeno + ' ' + prijmeni;
+          let vaha = 100, 
+              vyska = 188;
+          let vystup = '<li>' + pozdrav + ' tady ' + jmeno + ' ' + prijmeni + '</li>';
+          vystup = `Váha = ${vaha} kg a výška = ${vyska} cm`;
           console.log(vystup);
           //alert(vystup);
-          const sedmy = document.getElementById
+          const sedmy = document.getElementById('sedmy');
+          sedmy.innerHTML = vystup;
           </script>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
