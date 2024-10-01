@@ -200,7 +200,8 @@
           let vaha = 100, 
               vyska = 188;
           let vystup = '<li>' + pozdrav + ' tady ' + jmeno + ' ' + prijmeni + '</li>';
-          vystup = `Váha = ${vaha} kg a výška = ${vyska} cm`;
+          vystup += `<li>Váha = ${vaha} kg a výška = ${vyska} cm</li>`;
+          vystup += "<li>Motto: \"In vino veritas\"</li>";
           console.log(vystup);
           //alert(vystup);
           const sedmy = document.getElementById('sedmy');
