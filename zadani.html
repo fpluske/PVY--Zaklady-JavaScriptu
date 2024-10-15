@@ -34,13 +34,13 @@
             </p>
           </blockquote>
           <div class="bg-info p-3">
-            <ul>
-              <li>Je to scriptovací jazyk.</li>
-              <li>Používá se k přeměně HTML stránky.</li>
-              <li>Dokáže rozpohybovat stránku.</li>
-              <li><a href="https://www.w3schools.com/js/default.asp" target="_blank">Zde je odkaz na návod na stránky w3schools.com</a></li>
-              <li><a href="https://webflow.com/made-in-webflow/javascript" target="_blank">Zde je odkaz na nějaké příklady.</a></li>
-            </ul>
+            <p>
+              <ul>
+                <li>Vytváření interaktivních webových aplikací</li>
+                <li>Plná integrace s HTML a CSS, rychlejší interakce a dynamické načítání stránky.</li>
+                <li>Rozšířenost, nabídka frameworků, jež usnadňují tvorbu opakovaných částí webů i webových aplikací</li>
+              </ul>
+            </p>
           </div>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
@@ -50,7 +50,15 @@
             <p class="text-warning">Použij angličtinu!</p>
           </blockquote>
           <div class="bg-info p-3">
-            <p>Zde bude řešení.</p>
+            <p>
+              <ol>
+                <li>Commands are separated by a middle or line break</li>
+                <li>It depends on the case of the letters</li>
+                <li>Escape sequence</li>
+                <li>Strings are enclosed in quotation marks</li>
+                <li>Logical values</li>
+              </ol>
+            </p>
           </div>
         </div>
       </div>
@@ -68,6 +76,14 @@
             <code>
               // 1. Vložit kód do tagu script<br />
               &lt;script&gt;console.log('Hello');&lt;/script&gt;
+            </code>
+            <code>
+              <br>// 2. Tagem script s odkazem na externí soubor <br />
+                &lt;script&gt;src="externi_skript.js"&lt;/script&gt;
+            </code>
+            <code>
+              <br>// 3. In-line (řádkový) zápis jako atribut tagu bez použití tagu <br />
+
             </code>
           </div>
         </div>
@@ -200,18 +216,21 @@
             <p>Zde bude řešení.</p>
           </div>
           <script>
-          let jmeno = "Franta",
-              prijmeni = "Pluške";
-          const pozdrav = "Ahoj";
-          let vaha = 100, 
-              vyska = 188;
-          let vystup = '<li>' + pozdrav + ' tady ' + jmeno + ' ' + prijmeni + '</li>';
-          vystup += `<li>Váha = ${vaha} kg a výška = ${vyska} cm</li>`;
-          vystup += "<li>Motto: \"In vino veritas\"</li>";
-          console.log(vystup);
-          //alert(vystup);
-          const sedmy = document.getElementById('sedmy');
-          sedmy.innerHTML = vystup;
+            let jmeno = "František",
+                prijmeni = "Pluške";
+            const pozdrav = "Ahoj";
+            let vaha = 87,     //kg
+                vyska = 182;   //cm
+
+            let vystup = "<li>" + pozdrav + " tady " + jmeno + " " + prijmeni + "</li>";
+            vystup += `<li> Váha = ${vaha} kg a výška = ${vyska} cm </li>`;
+            vystup += "<li> Motto: \"In vino veritas\"</li>";
+            console.log(vystup);
+            // alert(vystup);
+            const sedmy = document.getElementById("sedmy");
+            sedmy.innerHTML = vystup;
+            sedmy.style.color = "yellow";
+            sedmy.style.fontSize = "1.2em";
           </script>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
@@ -234,6 +253,18 @@
           </div>
           <script>
           <!-- Zadejte JS kód -->
+          const osmy = document.getElementById("osmy");
+          osmy.addEventListener("mouseenter", function(){   /*jde použít click a dblclick*/
+              osmy.style.color = "red";
+              osmy.style.fontSize = "200%";
+              this.style.textAlign = "center";
+          });
+          osmy.addEventListener("mouseleave", function(){
+              osmy.style.color = "white";
+              osmy.style.fontSize = "100%";
+              this.style.textAlign = "left";
+          });
+          
           </script>
         </div>
       </div>
@@ -258,12 +289,21 @@
             </ol>
           </blockquote>
           <div class="bg-info p-3">
-            <button onclick="">
+            <button onclick='console.log(sudeLiche(prompt("Zadej celé číslo")))'>
               Zadej číslo
             </button>
           </div>
           <script>
             <!-- Zadejte JS kód -->
+            function sudeLiche(cislo = 5){
+              if (cislo == 0){
+                return "Nula";
+              } else if (cislo % 2 != 0){
+                return "Liché";
+              } else {
+                return "Sudé";
+              } 
+            }
           </script>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
@@ -285,10 +325,22 @@
             </ol>
           </blockquote>
           <div class="bg-light p-3">
-            <a href="">Vypiš den</a>
+            <a href="javascript:alert(denVTydnu(parseInt(prompt('Zadej číslo dne'))))">Vypiš den</a>
           </div>
           <script>
            <!-- Zadejte JS kód -->
+           function denVTydnu(den = 1){
+            switch(den){
+              case 1: return "Pondělí";
+              case 2: return "Úterý";
+              case 3: return "Středa";
+              case 4: return "Čtvrtek";
+              case 5: return "Pátek";
+              case 6: 
+              case 7: return "Víkend";
+              default: return console.error("Error: proměnná den má nepředvidatelnou hodnotu");
+            }
+           }
           </script>
         </div>
       </div>
@@ -305,6 +357,19 @@
           </div>
           <script>
             <!-- Zadejte JS kód -->
+            function prestupneRoky(min = 1897, max = 2024){
+              let vystup = "<ul> \n";
+              
+              for (let y = min; y <= max; y++){ //inkrementace je ++, dekrementace je --
+                if (y % 4 === 0 && y % 100 != 0 || y % 400 === 0) {
+                  vystup += `\t <li> ${y} </li> \n`;
+                }
+              }
+              vystup += "</ul>";
+              return vystup;
+            }
+            console.log(prestupneRoky());
+            document.getElementById("jedenacty").innerHTML = prestupneRoky();
           </script>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
@@ -334,6 +399,13 @@
           </div>
           <script>
             <!-- Zadejte JS kód -->
+            function vypisDatuCas() {
+              const d = new Date();
+              let datum = `${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`;
+              let cas = `${d.getHours()}:${d.getMinutes() > 9 ? d.getMinutes() : '0' + d.getMinutes()}:${d.getSeconds() > 9 ? d.getSeconds() : '0' + d.getSeconds()}`;
+              return datum + " " + cas;
+            }
+            console.log(vypisDatuCas());
           </script>
         </div>
         <div class="col-sm-6 bg-secondary text-light p-5">
